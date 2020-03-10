@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: s3-kms-sample
+    release: r1
+  name: s3-kms-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s3-kms-sample
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: s3-kms-sample
+    spec:
+      containers:
+        image: 999999999999.dkr.ecr.us-west-2.amazonaws.com/kmsample
+        imagePullPolicy: Always
+        name: s3-kms-sample
+        command: ["/start.py"]
+      schedulerName: default-scheduler
